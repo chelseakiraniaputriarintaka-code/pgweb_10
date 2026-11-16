@@ -135,16 +135,17 @@ if ($result && $result->num_rows > 0) {
                     <td>${item.nama_kode}</td>
                     <td>${item.nama_jalan}</td>
                     <td>${item.rt} / ${item.rw}</td>
-                    <td>${item.kampung}</td> <!-- Kembali jadi Kampung -->
+                    <td>${item.kampung}</td>
                     <td>${item.kondisi}</td>
                     <td>${item.latitude}</td>
                     <td>${item.longitude}</td>
                     <td>
+                        <a href="delete.php?id=${item.id}" onclick="return confirm('Yakin ingin menghapus data ${item.nama_kode}?')" style="color: red;">hapus</a> 
+                        | 
                         <a href="javascript:void(0)" onclick="bukaModalEdit('${item.id}', '${item.nama_kode}', '${item.nama_jalan}', '${item.rt}', '${item.rw}', '${item.kampung}', '${item.kondisi}', '${item.latitude}', '${item.longitude}')">edit</a>
                     </td>
                 </tr>`;
                 tableBody.innerHTML += row;
-
                 // Tulis ke Peta
                 var marker = L.marker([item.latitude, item.longitude]).addTo(map);
                 var popupContent = `<b>${item.nama_kode}</b><br>
